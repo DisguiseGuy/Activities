@@ -74,6 +74,10 @@ presence.on('UpdateData', async () => {
     }
     presenceData.smallImageKey = Assets.Search
   }
+  else if (/^\/user\/[^^\/]+\/profile$/.test(pathname)) {
+    presenceData.details = 'Looking at Profile Page'
+    presenceData.smallImageKey = Assets.Reading
+  }
   else if (pathname.startsWith('/watch2gether')) {
     if (pathname === '/watch2gether') {
       presenceData.details = 'Looking for anime rooms'
@@ -159,11 +163,6 @@ presence.on('UpdateData', async () => {
       }
       case '/contact': {
         presenceData.details = 'Contact Us'
-        break
-      }
-      case '/user/profile': {
-        presenceData.details = 'Checking User Profile'
-        presenceData.smallImageKey = ActivityAssets.Settings
         break
       }
       case '/user/settings': {
